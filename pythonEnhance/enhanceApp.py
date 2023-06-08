@@ -7,7 +7,9 @@ import numpy as np
 from io import BytesIO
 import base64
 
+#device = "cuda" if torch.cuda.is_available() else "cpu"
 
+device = "cpu"
 
 print("App is started.")
 app = Flask(__name__)
@@ -15,12 +17,29 @@ app = Flask(__name__)
 enhance_pretrain = r'best_Epoch_lol_v1.pth'
 
 ## Load Pre-train Weights
-model = IAT().cuda()
-model.load_state_dict(torch.load(enhance_pretrain))
+model = IAT().to(device)
+if device == "cuda":
+	model.load_state_dict(torch.load(enhance_pretrain))
+else:
+	model.load_state_dict(torch.load(enhance_pretrain, map_location=torch.device("cpu")))
 print("Model Loaded.")
 
 
-
+def scaleDownImage(image):
+    width, height = image.size
+    
+    if width > 500 or height > 500:
+        if width > height:
+            new_width = 500
+            new_height = int(height * (500 / width))
+        else:
+            new_height = 500
+            new_width = int(width * (500 / height))
+            
+        resized_image = image.resize((new_width, new_height), resample=Image.LANCZOS)
+        return resized_image
+    
+    return image
 
 def readFromBase64(encoded_data):
     decoded_data = base64.b64decode(encoded_data)
@@ -32,13 +51,15 @@ def enhance():
     data = request.get_json()
     imgPil = readFromBase64(data["image"])
 
+    imgPil = scaleDownImage(imgPil)
+
     imgNp = np.array(imgPil)
 
     imgNp = imgNp / 255.0
 
     if imgNp.shape[2] == 4:
         imgNp = imgNp[:, :, :3]
-    inputImg = torch.from_numpy(imgNp).float().cuda()
+    inputImg = torch.from_numpy(imgNp).float().to(device)
     inputImg = inputImg.permute(2,0,1).unsqueeze(0)
 
     with torch.no_grad():

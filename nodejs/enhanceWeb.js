@@ -1,5 +1,11 @@
 const express = require("express");
 const http = require("http");
+
+const https = require("https");
+const fs = require("fs");
+const key = fs.readFileSync('../cert/CA/localhost/localhost.decrypted.key');
+const cert = fs.readFileSync('../cert/CA/localhost/localhost.crt');
+
 const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
 const sharp = require('sharp');
@@ -26,7 +32,7 @@ app.post("/", async function(req, res){
     
     
     const options = {
-        hostname: "192.168.1.127",
+        hostname: "172.17.0.2",
         port: 3000,
         path: "/enhance",
         method: "POST",
@@ -58,7 +64,8 @@ app.post("/", async function(req, res){
     request.end();
     
 });
+const server = https.createServer({ key, cert }, app);
 
-app.listen(4000, function(){
+server.listen(443, function(){
     console.log("Server is running at port 4000.");
 });
