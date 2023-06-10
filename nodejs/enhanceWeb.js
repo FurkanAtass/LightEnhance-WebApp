@@ -3,8 +3,8 @@ const http = require("http");
 
 const https = require("https");
 const fs = require("fs");
-const key = fs.readFileSync('../cert/CA/localhost/localhost.decrypted.key');
-const cert = fs.readFileSync('../cert/CA/localhost/localhost.crt');
+const key = fs.readFileSync('cert/CA/localhost/localhost.decrypted.key');
+const cert = fs.readFileSync('cert/CA/localhost/localhost.crt');
 
 const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
