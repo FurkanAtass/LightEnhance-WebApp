@@ -32,7 +32,7 @@ app.post("/", async function(req, res){
     
     
     const options = {
-        hostname: "172.17.0.2",
+        hostname: "python_enhance",
         port: 3000,
         path: "/enhance",
         method: "POST",

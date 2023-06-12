@@ -1,0 +1,12 @@
+services:
+  node_enhance:
+    build: 
+      context: ./nodejs
+    ports:
+      - 443:443
+    
+  python_enhance:
+    build:
+      context: ./pythonEnhance
+    ports:
+      - 3000:3000
