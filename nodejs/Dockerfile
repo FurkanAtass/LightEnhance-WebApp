@@ -8,5 +8,5 @@ RUN npm install
 
 CMD ["node", "enhanceWeb.js"]
 
-EXPOSE 443
+EXPOSE 4000
 

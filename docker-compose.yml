@@ -1,12 +1,27 @@
 services:
+
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - 443:443
+    container_name: nginx
+
+  
   node_enhance:
     build: 
       context: ./nodejs
     ports:
-      - 443:443
-    
+      - 4000:4000
+    depends_on:
+      - nginx
+    container_name: node_enhance
+
+
   python_enhance:
     build:
       context: ./pythonEnhance
     ports:
       - 3000:3000
+    container_name: python_enhance

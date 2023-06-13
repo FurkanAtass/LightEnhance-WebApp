@@ -1,11 +1,6 @@
 const express = require("express");
 const http = require("http");
 
-const https = require("https");
-const fs = require("fs");
-const key = fs.readFileSync('cert/CA/localhost/localhost.decrypted.key');
-const cert = fs.readFileSync('cert/CA/localhost/localhost.crt');
-
 const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
 const sharp = require('sharp');
@@ -21,16 +16,13 @@ app.get("/", function(req, res) {
 
 app.post("/", async function(req, res){
     
-
     const imgData = await sharp(req.files.img.data).toBuffer();
     const imageData = Buffer.from(imgData).toString('base64');
-
 
     const postImg = {
         image: imageData,
     };
-    
-    
+        
     const options = {
         hostname: "python_enhance",
         port: 3000,
@@ -54,18 +46,14 @@ app.post("/", async function(req, res){
             res.render("result", {resultImage: `data:image/png;base64,${imageData.toString('base64')}`});
                                               
         });
-        
-       
+           
     });
 
-   
-    
     request.write(JSON.stringify(postImg));
     request.end();
     
 });
-const server = https.createServer({ key, cert }, app);
 
-server.listen(443, function(){
+app.listen(4000, function(){
     console.log("Server is running at port 4000.");
 });
