@@ -34,6 +34,7 @@ Go to LightEnhance-WebApp folder and use the command;
 
 where the -d flag stands for detached mode. It instructs Docker to start the containers defined in the Docker Compose file in the background and detach the terminal from the container's output.
 
+After containers turn into running stage, you can use the web-app from [https://localhost](https://localhost)
 
 ####  * Here is an example usage:
 [Low-Light-Enhance.webm](https://github.com/FurkanAtass/LightEnhance-WebApp/assets/79604903/533ffac2-7cf8-494e-84c7-86ad9d18f692)
