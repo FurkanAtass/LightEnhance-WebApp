@@ -1,6 +1,6 @@
 # Low-Light Image Enhancement Web App
 
-The Low-Light Image Enhance web app, inspired by the research paper ["A Light Weight Transformer for Image Enhancement and Exposure Correction" by Cui et al. (2022)](https://github.com/cuiziteng/Illumination-Adaptive-Transformer), leverages a compact Transformer model. This app, which incorporates the insights from the mentioned research, allows for efficient low-light image enhancement. The deployment of the app includes creating and containerizing the Flask app, Node website, and Nginx server using Docker Compose, ensuring seamless integration and scalability. 
+The Low-Light Image Enhancement web app, inspired by the research paper ["A Light Weight Transformer for Image Enhancement and Exposure Correction" by Cui et al. (2022)](https://github.com/cuiziteng/Illumination-Adaptive-Transformer), leverages a compact Transformer model. This app, which incorporates the insights from the mentioned research, allows for efficient low-light image enhancement. The deployment of the app includes creating and containerizing the Flask app, Node website, and Nginx server using Docker Compose, ensuring seamless integration and scalability. 
 
 ## Getting Started
 To run these containers,
