@@ -29,17 +29,18 @@ To run these containers,
 With the help of Docker Compose, the usage is "A piece of cake."
 Go to LightEnhance-WebApp folder and use the command;
 
+
 `docker compose up -d`
 
 where the -d flag stands for detached mode. It instructs Docker to start the containers defined in the Docker Compose file in the background and detach the terminal from the container's output.
 
 
 ####  * Here is an example usage:
-[![Low-Light Image Enhancement Web App](https://img.youtube.com/vi/QqK9YoX5wDQ/0.jpg)](https://www.youtube.com/watch?v=QqK9YoX5wDQ)
-
+[Low-Light-Enhance.webm](https://github.com/FurkanAtass/LightEnhance-WebApp/assets/79604903/533ffac2-7cf8-494e-84c7-86ad9d18f692)
 
 ## Stop and Delete
 - To stop containers;
+
 
     `docker compose stop`
 
