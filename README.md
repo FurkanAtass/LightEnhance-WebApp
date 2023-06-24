@@ -51,7 +51,7 @@ After containers turn into running stage, you can use the web-app from [https://
 
 - To delete the images that is created by the `docker-compose.yml` file;
 
-    `docker rmi $(docker-compose images -q)`
+    `docker rmi $(docker compose images -q)`
 
 
 ## Issues
