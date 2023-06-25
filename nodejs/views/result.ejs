@@ -4,10 +4,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Result Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .result-title h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .result-image {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .result-image img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .download-button {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>The result is</h1>
-    <img src= <%=resultImage %>  alt="">
+    <div class="container">
+        <div class="result-title">
+            <h1 class="display-4">The Result Is</h1>
+        </div>
+
+        <div class="result-image">
+            <a href="<%= resultImage %>" download>
+                <img src="<%= resultImage %>" alt="Result Image">
+            </a>
+        </div>
+
+        <a href="<%= resultImage %>" download class="btn btn-primary btn-block download-button">Download</a>
+    </div>
 </body>
 </html>
+
